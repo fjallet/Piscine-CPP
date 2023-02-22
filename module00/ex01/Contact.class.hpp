@@ -1,14 +1,14 @@
-#ifndef CONTACT_CLASS_H
-# define CONTACT_CLASS_H
+#ifndef CONTACT_CLASS_HPP
+# define CONTACT_CLASS_HPP
 
 class Contact{
 	
 public:
-	char	*lastname;
-	char	*firstname;
-	char	*surname;
-	char	*phonenum;
-	char	*heavysecret;
+	std::string	lastname;
+	std::string	firstname;
+	std::string	surname;
+	std::string	phonenum;
+	std::string	heavysecret;
 
 	Contact(void);
 	~Contact(void);
