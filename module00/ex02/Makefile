@@ -1,6 +1,8 @@
-NAME = megaphone
+NAME = account
 
-SRCS = megaphone.cpp
+HEADER = Account.hpp
+
+SRCS = tests.cpp Account.cpp
 
 OBJETS = ${SRCS:.c=.o}
 

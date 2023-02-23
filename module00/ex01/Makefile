@@ -10,8 +10,6 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-LIB = ar -rc
-
 ./.build/%.o : %.c
 	${CC} -I. -o $@ -c $? ${FLAGS}
 
