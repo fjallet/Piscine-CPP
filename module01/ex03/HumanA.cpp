@@ -3,24 +3,20 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-HumanA::HumanA(std::string name, Weapon type){
-	this->name = name;
-	this->type = &type;
+HumanA::HumanA(std::string name1, Weapon& type1) : name(name1), type(type1) {
+	std::cout << "HumanA constructor called" << std::endl;
 }
 
 HumanA::~HumanA(void){
-	std::cout << "HumanA constructor called" << std::endl;
+	std::cout << "HumanA destructor called" << std::endl;
 	return;
 }
 
 void	HumanA::attack(void){
-	if (this->type->getType().empty())
-		std::cout << "Get a weapon before attacking !!" << std::endl;
-	else
-		std::cout << this->name << " attacks with their " << this->type->getType() << std::endl;
+	std::cout << this->name << " attacks with their " << this->type.getType() << std::endl;
 	return;
 }
 
-void	HumanA::setWeapon(Weapon type){
-	this->type = &type;
+void	HumanA::setWeapon(Weapon& type){
+	this->type = type;
 }

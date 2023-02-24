@@ -3,14 +3,15 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name){
-	this->name = name;
-	//this->type = Weapon("");
+HumanB::HumanB(std::string name1){
+	this->name = name1;
+	std::cout << "HumanB constructor called" << std::endl;
+	//this->type = &Weapon("");
 	return;
 }
 
 HumanB::~HumanB(void){
-	std::cout << "HumanA constructor called" << std::endl;
+	std::cout << "HumanB destructor called" << std::endl;
 	return;
 }
 
@@ -22,6 +23,6 @@ void	HumanB::attack(void){
 	return;
 }
 
-void	HumanB::setWeapon(Weapon type){
+void	HumanB::setWeapon(Weapon& type){
 	this->type = &type;
 }

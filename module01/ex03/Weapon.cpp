@@ -3,14 +3,21 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-Weapon::Weapon(std::string type1) : type(type1){
+Weapon::Weapon(std::string type1){
+	this->type = type1;
 	std::cout << "Weapon constructor called" << std::endl;
 	return;
 }
 
+//Weapon::Weapon(std::string* type1) : type(type1){
+//	std::cout << "Weapon constructor called" << std::endl;
+//	return;
+//}
+
 Weapon::Weapon(void){
-	this->type = "";
+	this->type = "fist";
 	std::cout << "Weapon constructor called" << std::endl;
+	return;
 }
 
 Weapon::~Weapon(void){
