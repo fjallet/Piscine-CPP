@@ -15,6 +15,7 @@ Fixed::Fixed(int const n){
 
 Fixed::Fixed(float const n){
 	this->_nvf = (int)(n * 256.0f);
+	this->_nvf++;
 	std::cout << "Fixed constructor called with a float " << n << std::endl;
 	return;
 }

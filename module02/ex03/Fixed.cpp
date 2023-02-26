@@ -1,4 +1,4 @@
-#include "Fixed.hpp"
+#include "bsp.hpp"
 
 int const	Fixed::_nbf = 8;
 
@@ -73,7 +73,6 @@ Fixed		Fixed::operator-(Fixed const & rhs) const{
 }
 
 Fixed		Fixed::operator*(Fixed const & rhs) const{
-	std::cout << *this << std::endl;
 	long long	produit = (long long)this->_nvf * rhs.getRawBits();
 	int	fixe = (int)(produit >> 8);
 	Fixed	result;
