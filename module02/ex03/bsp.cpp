@@ -1,16 +1,17 @@
 #include "bsp.hpp"
 
-Fixed	ft_region(Point const a, Point const b, Point const point){
-	if ((point.getY() - a.getY()) / (b.getX() - a.getX()) > \
-	(b.getY() - a.getY()) / (b.getX() - a.getX()))
-		return (1);
-	return (0);
+Fixed	ft_scalaire(Point const a, Point const b, Point const c){
+	return ((a.getX() - c.getX()) * (b.getY() - c.getY()) - \
+	(a.getY() - c.getY()) * (b.getX() - c.getX()));
 }
 
 bool bsp( Point const a, Point const b, Point const c, Point const point){
-	
-	if (ft_region(a, b, point) == ft_region(b, c, point) && \
-	ft_region(b, c, point) == ft_region(c, a, point))
+	Fixed	pv1(ft_scalaire(a, b, point));
+	Fixed	pv2(ft_scalaire(b, c, point));
+	Fixed	pv3(ft_scalaire(c, a, point));
+	if (pv1 >= 0 && pv2 >= 0 && pv3 >= 0)
+		return (true);
+	if (pv1 >= 0 && pv2 >= 0 && pv3 >= 0)
 		return (true);
 	return (false);
 }
