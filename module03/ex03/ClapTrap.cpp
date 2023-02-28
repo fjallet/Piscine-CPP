@@ -52,6 +52,18 @@ int			ClapTrap::getAttackDamage(void) const{
 	return(this->_AttackDamage);
 }
 
+void		ClapTrap::setHitPoints(void){
+	this->_HitPoints = 10;
+}
+
+void		ClapTrap::setEnergyPoints(void){
+	this->_EnergyPoints = 10;
+}
+
+void		ClapTrap::setAttackDamage(void){
+	this->_AttackDamage = 0;
+}
+
 void	ClapTrap::attack(const std::string& target){
 	if (this->_EnergyPoints == 0){
 		std::cout << "ClapTrap " << this->_name << \

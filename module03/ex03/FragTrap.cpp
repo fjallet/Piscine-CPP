@@ -9,9 +9,9 @@ FragTrap::FragTrap(void){
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name){
-	this->_AttackDamage = 30;
+	this->setHitPoints();
 	this->_EnergyPoints = 100;
-	this->_HitPoints = 100;
+	this->setAttackDamage();
 	std::cout << "FragTrap constructor called named " << this->_name << std::endl;
 }
 
@@ -28,10 +28,10 @@ void	FragTrap::highFivesGuys(void) const{
 	std::cout << "FragTrap named " << this->_name << " want to do a high-five" << std::endl;
 }
 
-int		FragTrap::getHitPoints(void) const{
-	return (this->_HitPoints);
+void		FragTrap::setHitPoints(void){
+	this->_HitPoints = 100;
 }
 
-int		FragTrap::getAttackDamage(void) const{
-	return (this->_AttackDamage);
+void		FragTrap::setAttackDamage(void){
+	this->_AttackDamage = 30;
 }

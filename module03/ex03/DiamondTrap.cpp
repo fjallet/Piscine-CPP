@@ -5,15 +5,14 @@ DiamondTrap::DiamondTrap(void){
 	std::cout << "DiamondTrap constructor called named random" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScavTrap(name), ClapTrap(name)\
-,_name(name){
-	this->_AttackDamage = this->getAttackDamage();
-	this->_EnergyPoints = this->getEnergyPoints();
-	this->_HitPoints = this->getHitPoints();
+DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name), ClapTrap(name), _name(name){
+	FragTrap::setHitPoints();
+	ScavTrap::setEnergyPoints();
+	FragTrap::setAttackDamage();
 	std::cout << "DiamondTrap constructor called named " << name << std::endl;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const & cpy){
+DiamondTrap::DiamondTrap(DiamondTrap const & cpy) : ScavTrap(cpy), FragTrap(cpy), ClapTrap(cpy){
 	*this = cpy;
 	std::cout << "DiamondTrap copy constructor called named " << this->_name << std::endl;
 }

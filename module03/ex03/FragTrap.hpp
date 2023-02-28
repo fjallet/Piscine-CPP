@@ -12,12 +12,12 @@ class	FragTrap : virtual public ClapTrap{
 	FragTrap(FragTrap const & FragTrap);
 	~FragTrap(void);
 
-	//FragTrap &	operator=(FragTrap const & rhs);
-
 	void	highFivesGuys(void) const;
 
-	int		getHitPoints(void) const;
-	int		getAttackDamage(void) const;
+	protected:
+
+	void		setHitPoints(void);
+	void		setAttackDamage(void);
 
 };
 

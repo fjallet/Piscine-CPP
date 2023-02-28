@@ -20,12 +20,16 @@ class	ClapTrap{
 
 	void		setName(std::string name);
 
-	std::string	getName(void) const;
+	std::string			getName(void) const;
 	virtual int			getHitPoints(void) const;
 	virtual int			getEnergyPoints(void) const;
 	virtual int			getAttackDamage(void) const;
 
 	protected :
+	
+	virtual void		setHitPoints(void);
+	virtual void		setEnergyPoints(void);
+	virtual void		setAttackDamage(void);
 	
 	std::string	_name;
 	int			_HitPoints;

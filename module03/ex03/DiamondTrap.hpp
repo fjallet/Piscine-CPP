@@ -15,9 +15,9 @@ class	DiamondTrap : public ScavTrap, public FragTrap{
 
 	void	whoAmI(void);
 	using	ScavTrap::attack;
-	using	ScavTrap::getEnergyPoints;
-	using	FragTrap::getAttackDamage;
-	using	FragTrap::getHitPoints;
+	using	ScavTrap::_EnergyPoints;
+	using	FragTrap::_AttackDamage;
+	using	FragTrap::_HitPoints;
 
 	private :
 
