@@ -5,6 +5,8 @@ int	main(){
 	PhoneBook vieuxlivre;
 	do{
 		getline(std::cin, line);
+		if(std::cin.fail())
+			return (0);
 		if (line.compare("ADD") == 0)
 			vieuxlivre.add();
 		if (line.compare("SEARCH") == 0)

@@ -14,7 +14,9 @@ std::string	PhoneBook::_justasking(std::string qst){
 
 	do{
 		std::cout << "what is your " << qst << std::endl;
-		std::cin >> str;
+		getline(std::cin, str);
+		if (std::cin.fail())
+			exit(1);
 		if (str.empty())
 			std::cout << "empty sentence please answer at least something" << std::endl;
 	} while (str.empty());
@@ -101,6 +103,8 @@ void	PhoneBook::search(void) const {
 				std::cout << "It is not an integer" << std::endl;
 			}
 		}
+		if (std::cin.fail())
+			return;
 		if ((i < 1 || i > 8) || this->_list[i - 1].lastname.empty())
 			std::cout << "There is no contact with this index !!" << std::endl;
 	}while (i < 1 || i > 8 || this->_list[i - 1].lastname.empty());
