@@ -46,7 +46,7 @@ float		Fixed::toFloat(void) const{
 }
 
 int			Fixed::toInt(void) const{
-	return(roundf(this->toFloat()));
+	return(this->_nvf / 256);
 }
 
 Fixed &		Fixed::operator=(Fixed const & rhs){

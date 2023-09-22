@@ -3,8 +3,10 @@
 
 int main(int	argv, char	**argc){
 	if (argv != 4)
+	{
 		std::cout << "the right syntax is ./replace <filename> \"string 1\" \"string 2\"" << std::endl;
-
+		return (0);
+	}
 	std::ifstream	ifs(argc[1]);
 	std::string		str;
 	std::string		res;
@@ -14,6 +16,11 @@ int main(int	argv, char	**argc){
 	std::string		ret;
 	size_t			pos1;
 	size_t			pos2;
+	if (!ifs.good())
+	{
+		std::cout << "file doesn't exist" << std::endl;
+		return (0);
+	}
 	ifs >> add;
 	while (add.size() != 0){
 		str += add;
@@ -24,7 +31,17 @@ int main(int	argv, char	**argc){
 	pos1 = 0;
 	pos2 = 0;
 	s1 = argc[2];
+	if (s1[0] == '\0')
+	{
+		std::cout << "error : empty string" << std::endl;
+		return (0);
+	}
 	s2 = argc[3];
+	if (s2[0] == '\0')
+	{
+		std::cout << "error : empty string" << std::endl;
+		return (0);
+	}
 	while (pos2 != std::string::npos){
 		pos2 = str.find(s1, pos1);
 		if (pos2 == std::string::npos){
@@ -42,7 +59,5 @@ int main(int	argv, char	**argc){
 	ret += ".replace";
 	std::ofstream	ofs(ret);
 	ofs << res;
-	//std::cout << str << std::endl;
-	//std::cout << res << std::endl;
 	return (0);
 }

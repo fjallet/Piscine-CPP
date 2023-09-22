@@ -1,30 +1,27 @@
-NAME = Harl
+NAME= Harl
+SRCS= main.cpp Harl.cpp
+INCLUDE = Harl.hpp
 
-HEADER = Harl.hpp
+OBJS		=		$(SRCS:.cpp=.o)
+DEPS		=		$(SRCS:.cpp=.d)
 
-SRCS = main.cpp Harl.cpp
+CC= c++
+FLAGS= -Wall -Wextra -Werror -std=c++98
 
-OBJETS = ${SRCS:.c=.o}
+%.o:				%.cpp
+	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
-CC = c++
+all: $(NAME)
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+$(NAME): $(OBJS)
+	@echo "Compilation du programme $(NAME)"
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+clean:
+	rm -Rf $(OBJS) $(DEPS)
 
-./.build/%.o : %.c
-	${CC} -I. -o $@ -c $? ${FLAGS}
+fclean: clean
+	rm -Rf $(NAME)
+re: fclean all
 
-${NAME}	 : ${OBJETS}
-		${FT_PRINTF}
-		${CC} -o ${NAME} ${OBJETS}
-
-all: ${NAME}
-
-clean :
-	rm -rf .build
-
-fclean : clean
-	rm -f ${NAME}
-
-re :  fclean all
-
-PHONY = all clean fclean re
+-include $(DEPS)
+.PHONY: all clean fclean re

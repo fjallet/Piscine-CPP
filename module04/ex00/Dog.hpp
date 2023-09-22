@@ -13,10 +13,6 @@ class	Dog : public Animal{
 	virtual void	makeSound(void) const;
 	virtual std::string		getType(void) const;
 
-	protected:
-	
-	std::string	type;
-
 };
 
 #endif

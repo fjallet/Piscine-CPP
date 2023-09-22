@@ -1,6 +1,14 @@
 #include <iostream>
 #include <ctype.h>
 
+std::string call()
+{
+	std::string temp = "Bomber";
+	std::cout << "Addr: " << &temp << std::endl;
+	return (temp);
+}
+
+
 int	main(int ac, char **av)
 {
 	int		i = 1;
@@ -25,6 +33,6 @@ int	main(int ac, char **av)
 		}
 		i++;
 	}
-	std::cout << '\n';
+	std::cout << std::endl;
 	return (0);
 }

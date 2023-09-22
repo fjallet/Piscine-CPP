@@ -26,14 +26,14 @@ std::string	PhoneBook::_justasking(std::string qst){
 void	PhoneBook::add(void){
 	Contact	c;
 
-	c.lastname = _justasking("last name");
-	c.firstname = _justasking("fist name");
-	c.surname = _justasking("surname");
-	c.phonenum = _justasking("phone number");
-	c.heavysecret = _justasking("heavy secret");
+	c.SetLastName(_justasking("last name"));
+	c.SetFirstName(_justasking("fist name"));
+	c.SetSurname(_justasking("surname"));
+	c.SetPhoneNum(_justasking("phone number"));
+	c.SetHeavySecret(_justasking("heavy secret"));
 	for (int i = 0; i < 8; i++)
 	{
-		if (this->_list[i].lastname.empty())
+		if (this->_list[i].GetLastName().empty())
 		{
 			this->_list[i] = c;
 			this->_numc += 1;
@@ -62,24 +62,24 @@ void	PhoneBook::_subdisplay(std::string str) const {
 
 void	PhoneBook::_displaylist(void) const {
 	std::cout << "  index   |last name |first name| surname" << std::endl;
-	for(int i = 0; i < 8 && !this->_list[i].lastname.empty() ; i++)
+	for(int i = 0; i < 8 && !this->_list[i].GetLastName().empty() ; i++)
 	{
 		std::cout << "    " << i + 1 << "     |";
-		_subdisplay(this->_list[i].lastname);
+		_subdisplay(this->_list[i].GetLastName());
 		std::cout << "|";
-		_subdisplay(this->_list[i].firstname);
+		_subdisplay(this->_list[i].GetFirstName());
 		std::cout << "|";
-		_subdisplay(this->_list[i].surname);
+		_subdisplay(this->_list[i].GetSurname());
 		std::cout << std::endl;
 	}
 }
 
 void	PhoneBook::_displaycontact(int i) const {
-	std::cout << "last name : " << this->_list[i].lastname << std::endl;
-	std::cout << "fist name : " << this->_list[i].firstname << std::endl;
-	std::cout << "surname : " << this->_list[i].surname << std::endl;
-	std::cout << "phone number :" << this->_list[i].phonenum << std::endl;
-	std::cout << "heavy secret : " << this->_list[i].heavysecret << std::endl;
+	std::cout << "last name : " << this->_list[i].GetLastName() << std::endl;
+	std::cout << "fist name : " << this->_list[i].GetFirstName() << std::endl;
+	std::cout << "surname : " << this->_list[i].GetSurname() << std::endl;
+	std::cout << "phone number :" << this->_list[i].GetPhoneNum() << std::endl;
+	std::cout << "heavy secret : " << this->_list[i].GetHeavySecret() << std::endl;
 }
 
 void	PhoneBook::search(void) const {
@@ -105,8 +105,8 @@ void	PhoneBook::search(void) const {
 		}
 		if (std::cin.fail())
 			return;
-		if ((i < 1 || i > 8) || this->_list[i - 1].lastname.empty())
+		if ((i < 1 || i > 8) || this->_list[i - 1].GetLastName().empty())
 			std::cout << "There is no contact with this index !!" << std::endl;
-	}while (i < 1 || i > 8 || this->_list[i - 1].lastname.empty());
+	}while (i < 1 || i > 8 || this->_list[i - 1].GetLastName().empty());
 	_displaycontact(i - 1);
 }

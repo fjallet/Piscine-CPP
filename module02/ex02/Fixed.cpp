@@ -61,32 +61,19 @@ Fixed &		Fixed::operator=(Fixed const & rhs){
 }
 
 Fixed		Fixed::operator+(Fixed const & rhs) const{
-	Fixed	result;
-	result.setRawBits(this->_nvf + rhs.getRawBits());
-	return (result);
+	return (Fixed (this->toFloat() + rhs.toFloat()));
 }
 
 Fixed		Fixed::operator-(Fixed const & rhs) const{
-	Fixed	result;
-	result.setRawBits(this->_nvf - rhs.getRawBits());
-	return (result);
+	return (Fixed (this->toFloat() - rhs.toFloat()));
 }
 
 Fixed		Fixed::operator*(Fixed const & rhs) const{
-	std::cout << *this << std::endl;
-	long long	produit = (long long)this->_nvf * rhs.getRawBits();
-	int	fixe = (int)(produit >> 8);
-	Fixed	result;
-	result.setRawBits(fixe);
-	return (result);
+	return (Fixed (this->toFloat() * rhs.toFloat()));
 }
 
 Fixed		Fixed::operator/(Fixed const & rhs) const{
-	Fixed	result;
-	long long	numerateur = (long long)this->_nvf << 8;
-	int	fixe = numerateur / rhs.getRawBits();
-	result.setRawBits(fixe);
-	return (result);
+	return (Fixed (this->toFloat() / rhs.toFloat()));
 }
 
 bool		Fixed::operator>(Fixed const & rhs) const{
