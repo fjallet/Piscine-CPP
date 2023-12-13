@@ -6,7 +6,7 @@
 
 class Bureaucrat;
 
-class	RobotomyRequestForm : public Form{
+class	RobotomyRequestForm : public AForm{
 
 	public:
 

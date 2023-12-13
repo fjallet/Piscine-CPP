@@ -6,7 +6,7 @@
 
 class Bureaucrat;
 
-class	ShrubberyCreationForm : public Form{
+class	ShrubberyCreationForm : public AForm{
 
 	public:
 

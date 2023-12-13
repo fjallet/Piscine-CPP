@@ -100,12 +100,36 @@ void				Form::beSigned(Bureaucrat a){
 	a.signForm(*this);
 }
 
+void				Form::formExecute(Bureaucrat const & executor){
+	try{
+		if (this->getSigned() == true){
+			throw GradeTooHighException();
+		}
+		else if (this->getGradeExec > executor->getGrade()){
+			throw GradeTooLowException();
+		}
+	}
+	catch (FormNotSignedException e){
+		std::cout << "Wrong form: Form " << this->getName() << e.what() << std::endl;
+		return;
+	}
+	catch (GradeTooLowException e){
+		std::cout << "Wrong grade: executor " << executor->getName() << e.what() << std::endl;
+		return;
+	}
+	execute(executor);
+}
+
 const char*			Form::GradeTooHighException::what() const throw(){
-	return ("grade is too high");
+	return (" grade is too high");
 }
 
 const char*			Form::GradeTooLowException::what() const throw(){
-	return ("grade is too low");
+	return (" grade is too low");
+}
+
+const char*			Form::FormNotSignedException::what() const throw(){
+	return (" is not signed");
 }
 
 std::ostream &		operator<<(std::ostream & o, Form const & i){

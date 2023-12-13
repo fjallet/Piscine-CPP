@@ -6,41 +6,20 @@
 
 class Bureaucrat;
 
-class	PresidentialPardonForm : public Form{
+class	PresidentialPardonForm : public AForm{
 
 	public:
 
 		PresidentialPardonForm();
-		PresidentialPardonForm(std::string name, int gradesign, int gradeexec);
-		virtual ~PresidentialPardonForm();
+		PresidentialPardonForm(std::string target);
+		~PresidentialPardonForm();
 
-		PresidentialPardonForm(PresidentialPardonForm const & rhs);
-		PresidentialPardonForm &	operator=(PresidentialPardonForm const & cpy);
-
-		std::string const	getName() const;
-		int					getGradeSign() const;
-		int					getGradeExec() const;
-
-		bool				getSigned() const = 0;
-		void				beSigned(Bureaucrat a);
-		
-		class GradeTooHighException : public std::exception{
-			public:
-				virtual const char* what() const throw();
-		};
-
-		class GradeTooLowException : public std::exception{
-			public:
-				virtual const char* what() const throw();
-		};
-
+		void			beSigned(Bureaucrat a);
+		void			execute(Bureaucrat const & executor);
+	
 	private:
 
-		std::string const	_name;
-		int const			_gradesign;
-		int const			_gradeexec;
-		bool				_signed;
-
+		std::string		_target
 };
 
 std::ostream &	operator<<(std::ostream & o, PresidentialPardonForm const & i);

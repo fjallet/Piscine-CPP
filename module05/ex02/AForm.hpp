@@ -20,9 +20,11 @@ class	Form{
 		std::string const	getName() const;
 		int					getGradeSign() const;
 		int					getGradeExec() const;
+		bool				getSigned() const;
 
-		bool				getSigned() const = 0;
 		void				beSigned(Bureaucrat a);
+		void				formExecute(Bureaucrat const & executor);
+		virtual void		execute(Bureaucrat const & executor) = 0;
 		
 		class GradeTooHighException : public std::exception{
 			public:
@@ -30,6 +32,11 @@ class	Form{
 		};
 
 		class GradeTooLowException : public std::exception{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class FormNotSignedException : public std::exception{
 			public:
 				virtual const char* what() const throw();
 		};
