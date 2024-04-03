@@ -1,6 +1,6 @@
 NAME= Form
-SRCS= main.cpp Bureaucrat.cpp Form.cpp
-INCLUDE = Bureaucrat.hpp Form.hpp
+SRCS= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+INCLUDE = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 
 OBJS		=		$(SRCS:.cpp=.o)
 DEPS		=		$(SRCS:.cpp=.d)

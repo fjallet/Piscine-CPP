@@ -2,7 +2,7 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat;
 
@@ -10,37 +10,18 @@ class	RobotomyRequestForm : public AForm{
 
 	public:
 
-		RobotomyRequestForm();
-		RobotomyRequestForm(std::string name, int gradesign, int gradeexec);
-		virtual ~RobotomyRequestForm();
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(RobotomyRequestForm& src);
+		RobotomyRequestForm& operator=(RobotomyRequestForm& rhs);
+		~RobotomyRequestForm();
 
-		RobotomyRequestForm(RobotomyRequestForm const & rhs);
-		RobotomyRequestForm &	operator=(RobotomyRequestForm const & cpy);
+		std::string		getTarget();
 
-		std::string const	getName() const;
-		int					getGradeSign() const;
-		int					getGradeExec() const;
-
-		bool				getSigned() const = 0;
-		void				beSigned(Bureaucrat a);
-		
-		class GradeTooHighException : public std::exception{
-			public:
-				virtual const char* what() const throw();
-		};
-
-		class GradeTooLowException : public std::exception{
-			public:
-				virtual const char* what() const throw();
-		};
-
+		void			execute(Bureaucrat const & executor);
+	
 	private:
 
-		std::string const	_name;
-		int const			_gradesign;
-		int const			_gradeexec;
-		bool				_signed;
-
+		std::string		_target;
 };
 
 std::ostream &	operator<<(std::ostream & o, RobotomyRequestForm const & i);

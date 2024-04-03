@@ -10,7 +10,6 @@ class	Form{
 
 	public:
 
-		Form();
 		Form(std::string name, int gradesign, int gradeexec);
 		virtual ~Form();
 

@@ -4,13 +4,12 @@
 #include <iostream>
 #include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class	Bureaucrat{
 
 	public:
 
-		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		virtual ~Bureaucrat();
 
@@ -21,7 +20,7 @@ class	Bureaucrat{
 		int					getGrade() const;
 		void				setGrade(int grade);
 
-		void				signForm(Form a);
+		void				signForm(AForm & a);
 		void				upgrade();
 		void				downgrade();
 		

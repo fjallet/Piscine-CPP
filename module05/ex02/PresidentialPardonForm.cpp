@@ -1,32 +1,36 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : _target("anything") AForm("Form", 25, 5){
-	//std::cout << "PresidentialPardonForm constructor called" << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : _target(target), \
+AForm("PresidentialPardonForm", 25, 5){
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : _target(target) \
-AForm("Form", 25, 5){
-	
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& src) : AForm("PresidentialPardonForm", 25, 5), _target( src._target ) {
+}
+
+PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm& rhs){
+	this->_target = rhs.getTarget();
+	return *this;
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor){
-
-	std::cout << this->_target << " has been pardonned by Zaphod Beeblebrox." << std::endl;
+	try{
+		if (this->getSigned() == false)
+			throw AForm::NotSignedException();
+		if (executor.getGrade() > this->getGradeExec())
+			throw AForm::GradeTooLowException();
+		std::cout << this->_target << " has been pardonned by Zaphod Beeblebrox." << std::endl;
+	}
+	catch (AForm::GradeTooLowException& e){
+		std::cout << executor.getName() << " coulnd't execute " << this->getName() << " because " << e.what() << std::endl;
+	}
+	catch (AForm::NotSignedException& e){
+		std::cout << executor.getName() << " coulnd't execute " << this->getName() << " because " << e.what() << std::endl;
+	}
 }
 
-//PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & rhs) : _name(rhs.getName()), _gradesign(rhs.getGradeSign()), _gradeexec(rhs.getGradeExec()){
-//	*this = rhs;
-//	//std::cout << "PresidentialPardonForm copy constructor called" << std::endl;
-//}
-//
-//PresidentialPardonForm&	PresidentialPardonForm::operator=( const PresidentialPardonForm& copy){
-//	if (this != &copy)
-//	{
-//		this->_signed = copy.getSigned();
-//	}
-//	return *this;
-//}
+std::string		PresidentialPardonForm::getTarget(){
+	return(this->_target);
+}
 
 PresidentialPardonForm::~PresidentialPardonForm(){
-	//std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }

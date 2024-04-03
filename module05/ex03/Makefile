@@ -1,4 +1,4 @@
-NAME= Form
+NAME= Intern
 SRCS= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
 RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 INCLUDE = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp \

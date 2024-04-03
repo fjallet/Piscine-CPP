@@ -10,7 +10,6 @@ class	Bureaucrat{
 
 	public:
 
-		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		virtual ~Bureaucrat();
 
@@ -21,7 +20,7 @@ class	Bureaucrat{
 		int					getGrade() const;
 		void				setGrade(int grade);
 
-		void				signForm(Form a);
+		void				signForm(Form& a);
 		void				upgrade();
 		void				downgrade();
 		
